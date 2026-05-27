@@ -1,11 +1,11 @@
 ---
 name: themed-ui-slides
-description: Create or enhance browser-based HTML presentations through a dedicated art-directed micro UI production pass while using frontend-slides as the base workflow. Use when a deck, pitch, class presentation, report, product launch, or converted presentation needs a locked color and art direction, reference-image-matched UI illustration, extractable thematic asset kits, controller or HUD pieces, app cards, chat panels, timelines, receipts, itinerary cards, or an authorized parallel UI-art subagent generating assets while the main agent builds HTML typography and layout.
+description: Create or enhance browser-based HTML presentations through an author-confirmed color and art-direction gate followed by a dedicated subagent-only micro UI production pass, while using frontend-slides as the base workflow. Use when a deck, pitch, class presentation, report, product launch, or converted presentation needs a varied, reference-matched, animation-ready, Figma-friendly themed UI kit such as controllers, keycaps, HUD pieces, app cards, chat panels, timelines, receipts, itinerary cards, or other restrained but distinctive visual components.
 ---
 
 # Themed UI Slides
 
-Create refined HTML presentations whose small visual designs are deliberately made for the subject, not added as generic decoration.
+Create refined HTML presentations whose small visual designs are confirmed with the author, made for the subject, and animated into the story without competing with it.
 
 ## Base Workflow
 
@@ -13,19 +13,22 @@ Use this skill alongside `frontend-slides`.
 
 1. Run the dependency bootstrap below before designing or generating assets.
 2. Load and follow the `frontend-slides` skill for presentation creation, conversion, navigation, inline editing, motion, delivery, and viewport-fitting rules.
-3. Load a supported image-generation capability whenever generating new bitmap UI assets, visual motifs, transparent cutouts, or style-matched decorative elements. In Codex, use the bundled `imagegen` skill and tool.
-4. Treat every invariant from `frontend-slides` as mandatory, especially single-file HTML delivery, slide density limits, `clamp()` sizing, `overflow: hidden`, responsive height checks, and required supporting CSS.
-5. Make the UI art pass central whenever the user requests thematic small designs or generated UI: lock a visual world, produce topic-specific UI assets, and compose the selected assets into the deck.
-6. Apply this skill as an enhancement layer for art direction, image-generated assets, and micro UI composition only. Do not replace or weaken the base workflow.
+3. Analyze the presentation topic and references, shortlist appropriate HTML palette and art-direction options, and ask the author to confirm one direction before producing a full deck or generating UI assets.
+4. After author confirmation, use a dedicated UI-art subagent for every image-generation pass. In Codex, the subagent loads the bundled `imagegen` skill and tool.
+5. Treat every invariant from `frontend-slides` as mandatory, especially single-file HTML delivery, slide density limits, `clamp()` sizing, `overflow: hidden`, responsive height checks, and required supporting CSS.
+6. Make the UI art pass central whenever the user requests thematic small designs or generated UI, but keep those assets subordinate to the message.
+7. Apply this skill as an enhancement layer for art direction, image-generated assets, and micro UI composition only. Do not replace or weaken the base workflow.
 
 ## Compatibility With Frontend Slides
 
-`frontend-slides` remains authoritative for content discovery, style approval, HTML architecture, responsive fitting, interaction, and final delivery. This skill inserts a focused art-production workflow after the style direction is chosen and before the deck is finalized.
+`frontend-slides` remains authoritative for content discovery, style approval, HTML architecture, responsive fitting, interaction, and final delivery. This skill makes its style-choice phase stricter, then inserts a focused art-production workflow after author approval and before the deck is finalized.
 
-- Do not begin asset generation before `frontend-slides` style discovery is complete or the user has already supplied a clear visual reference and palette.
+- Before style approval, only analyze content, inspect supplied references, shortlist suitable directions, and produce the style previews allowed by `frontend-slides`. Do not produce the final deck or generated UI assets.
+- Even when the author supplies a reference image or describes a palette, summarize the inferred direction and receive confirmation before beginning generated UI production.
 - The main agent may build slide structure, live text, CSS tokens, and reserved image slots while art is being produced, but it must not pretend the generated-UI requirement is complete with placeholders alone.
 - Keep titles, factual content, charts, labels, and important copy in HTML. Generated UI supplies forms, surfaces, subject objects, frames, ornaments, and atmosphere.
-- If an asset makes a slide too dense, reduce the asset, move it to another slide, or split the slide under `frontend-slides` rules. Never shrink key text to make decoration fit.
+- Treat micro UI as supporting detail across the slide layout, not as a thin asset list: produce a varied themed kit for the deck, then prefer one signature element on a title or closing slide and one small supporting component at most on a normal content slide unless the story specifically needs a UI comparison.
+- If an asset makes a slide too dense or steals attention from the message, reduce it, fade it into the background, move it to another slide, or split the slide under `frontend-slides` rules. Never shrink key text to make decoration fit.
 - If instructions ever conflict, preserve the mandatory viewport, density, single-file, accessibility, and delivery constraints from `frontend-slides`.
 
 ## Dependency Bootstrap
@@ -55,9 +58,9 @@ Require an actual image-generation capability whenever the requested design uses
 
 ## Design Process
 
-### 1. Lock the Visual World Before Generation
+### 1. Recommend and Confirm the Visual World Before Production
 
-Do not generate UI assets until the deck has one agreed or clearly inferred visual direction. Extract:
+Do not build the full presentation and do not generate UI assets until the author confirms one visual direction. First extract:
 
 - subject, audience, and purpose
 - language used in the deck
@@ -65,20 +68,24 @@ Do not generate UI assets until the deck has one agreed or clearly inferred visu
 - palette, contrast, texture, edge treatment, dimensionality, icon style, and motion character
 - concrete objects associated with the topic, such as transactions, routes, messages, inventory, lessons, metrics, bookings, or model outputs
 
-Choose one clear visual thesis. Examples:
+Based on the presentation topic and any supplied references, filter out unsuitable directions and present two or three strong palette-and-style options or `frontend-slides` title-slide previews. Each option should state the palette, material feeling, typography direction, micro UI vocabulary, and why it fits the subject.
+
+Ask the author to select or adjust one direction. Record the approved direction as the `Style Lock`; all HTML and UI assets must follow it.
+
+Example visual theses:
 
 - Campus coffee marketing: mobile order cards, coupon chips, footfall pulse, membership tier badge.
 - AI customer service: chat transcript, confidence status, routing queue, resolution timer.
 - Travel proposal: boarding pass strip, day-plan card, map stop chip, budget receipt.
 - Soft editorial esports: frosted ivory surfaces, dusty blue/gold/red accents, rounded outlined keycaps, controller pieces, target markers, trophy dividers.
 
-If the user supplies an image as the palette or style reference, use it as visual guidance rather than an edit target unless the user explicitly asks to change that image. If no style has been chosen, finish `frontend-slides` style discovery before generating assets.
+If the author supplies an image as the palette or style reference, use it as visual guidance rather than an edit target unless explicitly asked to change that image. Still confirm the interpreted style lock before generating assets.
 
 Read [references/micro-ui-patterns.md](references/micro-ui-patterns.md) and [references/generated-ui-assets.md](references/generated-ui-assets.md) before implementation.
 
-### 2. Build the Layout Skeleton and UI Art Brief
+### 2. After Confirmation, Build the Layout Skeleton and UI Art Brief
 
-After the visual direction is locked, have the main agent read the mandatory Phase 3 supporting files required by `frontend-slides`, then begin the HTML structure and text typography using that workflow. It should establish CSS variables, slide hierarchy, live text, and intentional slots for generated assets before final composition.
+Only after the author approves the `Style Lock`, have the main agent read the mandatory Phase 3 supporting files required by `frontend-slides`, then begin the HTML structure and text typography using that workflow. It should establish CSS variables, slide hierarchy, live text, and intentional slots for generated assets before final composition.
 
 At the same time, write a concise `UI Art Brief` for the art-production pass:
 
@@ -86,8 +93,10 @@ At the same time, write a concise `UI Art Brief` for the art-production pass:
 - approved palette, materials, shapes, line weight, depth, and motion mood
 - reference-image role: style reference, not edit target, unless explicitly requested
 - two to four topic-specific asset families
+- three or more individual component targets when thematic generated UI is requested, with each target tied to the presentation subject
 - intended slide slot for each asset: dimensions or aspect, approximate placement, foreground or background role, and required empty space
-- output requirement: text-free or blank-shell assets, preferably isolated PNG or WebP cutouts where suitable
+- output requirement: text-free or blank-shell assets, preferably SVG-ready geometric parts or isolated transparent PNG/WebP cutouts where suitable
+- animation behavior: subtle entrance, float, mask reveal, line draw, or low-opacity drift that supports rather than leads the slide
 - avoid list: generic off-theme UI, watermark, unwanted text, invented data, and visual clutter
 
 Choose at most three component families for a short or medium deck, and at most four for a long deck. Reuse the same visual grammar rather than inventing a new widget on every slide.
@@ -101,11 +110,26 @@ Use micro UI only when it does at least one job:
 
 Do not insert interface panels merely to fill space. A cultural essay, emotional speech, or highly photographic story may need almost no UI.
 
+#### Themed UI Kit Minimum
+
+When the author asks for generated thematic UI, plan a coherent kit with multiple usable pieces rather than one generic accent.
+
+- For a short or medium deck, plan at least three distinct usable components across two or three topic-linked families. For a long deck, plan four to six components where the narrative supports them.
+- Include at least one unmistakably topic-linked signature component and at least one smaller supporting component that can recur subtly through the deck.
+- A plain underline, generic empty card, dot row, or universal rounded panel does not satisfy the kit requirement by itself. It counts only when its silhouette, details, or pairing clearly belongs to the approved topic and visual world.
+- Examples: esports may use controller silhouette, directional key cluster, joystick module, tournament badge, target marker, or trophy accent; travel may use ticket stub, luggage tag, route waypoint, boarding-pass segment, or room-key marker; campus coffee may use cup profile, loyalty stamp, order tab, roast dial, or pickup indicator.
+- Generate or rebuild final pieces separately so the main agent can place and animate them independently. Do not rely only on a single contact sheet.
+
 When the intended style depends heavily on generated imagery, create a compact style-board preview first, then generate selected assets as separate usable cutouts. Do not rely on cropping many finished assets from one crowded board.
 
-### 3. Run the Dedicated UI Art Production Pass
+### 3. Require a Dedicated UI Art Subagent for Image Generation
 
-Use a dedicated UI-art worker when the host supports subagents and the user has explicitly requested or approved delegation or parallel production.
+Any image-generation pass for this skill must be delegated to a dedicated UI-art subagent. Never let the main agent generate thematic UI images directly.
+
+- If the author already requested or authorized subagent use, spawn the UI-art subagent after style confirmation.
+- If the author requested generated UI but did not explicitly authorize delegation, ask for that authorization after the `Style Lock` is approved and before generating images.
+- If the host cannot create subagents, stop the image-generated UI path and explain that this skill's required art workflow is unavailable in that host. Do not silently downgrade to single-agent image generation.
+- If the author declines delegation, continue only without image-generated UI, or offer native HTML/CSS/SVG decoration as a separately approved non-generated alternative.
 
 Parallel ownership:
 
@@ -125,26 +149,34 @@ Pass the UI-art subagent only the material it needs:
 The UI-art subagent must:
 
 1. Use an actually accessible image-generation capability; in Codex use `imagegen` when it is available to the subagent.
-2. Generate a style-board preview only when needed to establish direction, then generate final useful assets individually.
-3. Produce small artistic UI pieces like the user's chosen world suggests: for soft editorial esports, this can mean outlined controllers, keycaps, joystick modules, trophy marks, target dividers, and blank match-card shells in the approved restrained palette.
-4. Inspect results, reject off-style or generic assets, and return selected asset paths, intended HTML roles, transparency status, and any required cropping or layering note.
-5. Never rewrite the deck narrative, add unsupported claims, or bake important text into imagery.
+2. Follow only the author-approved `Style Lock`; do not independently switch palette, material, or aesthetic.
+3. Generate a style-board preview only when needed to refine the approved UI vocabulary, then generate final useful assets individually.
+4. Produce a varied but restrained UI kit like the approved world suggests: for soft editorial esports, this can mean outlined controllers, keycaps, joystick modules, trophy marks, target markers, and a customized blank match-card shell in the approved restrained palette.
+5. Reject a delivery that consists only of universal lines, plain cards, circles, or separators with no clear topic identity.
+6. Inspect results, reject off-style or attention-stealing assets, and return selected asset paths, intended HTML roles, transparency status, format recommendation, and any required cropping or layering note.
+7. Never rewrite the deck narrative, add unsupported claims, or bake important text into imagery.
 
-If a subagent is unavailable, has no image-generation access, or has not been authorized, do not fake this parallel pass. The main agent should either request delegation approval when needed or perform the identical UI-art production pass itself in sequence. If image generation itself is unavailable, follow the fallback rule in Dependency Bootstrap.
+If the subagent has no image-generation access, do not fake this art pass and do not ask the main agent to generate images instead. State the limitation and follow the fallback rule in Dependency Bootstrap.
 
-### 4. Generate Theme-Matched Extractable UI Assets
+### 4. Produce Theme-Matched, Figma-Friendly UI Assets
 
-Use the available supported image-generation capability for visually rich bitmap elements that benefit from a coherent illustrated, material, or object-like appearance, such as a controller, keyboard key set, ticket, phone fragment, product card shell, or decorative HUD ornament. In Codex, this means `imagegen`.
+Use the UI-art subagent's supported image-generation capability for visually rich elements that benefit from a coherent illustrated, material, or object-like appearance, such as a controller, keyboard key set, ticket, phone fragment, product card shell, or decorative HUD ornament. In Codex, the subagent uses `imagegen`.
 
 - Keep every generated asset consistent with the locked palette and visual style as well as the presentation topic.
-- Prefer a usable set of extractable art pieces over a single decorative collage: isolated hero object, empty card shell, divider or badge, and optional soft background fragment.
+- Prefer a usable set of distinctive, isolated art pieces over a single decorative collage: a topic-linked signature object, a smaller control or badge cluster, a customized shell or marker, and an optional soft background fragment.
 - Prefer text-free assets or blank UI shells with deliberate text areas.
 - Keep important titles, labels, numbers, and factual statements as HTML text layered over or beside images, not baked into generated pixels.
 - Generate isolated objects or clusters suitable for composition in HTML. For transparent elements, follow the chosen provider's supported transparent-output or background-removal workflow and validate the alpha result.
 - Keep selected project-bound assets inside the presentation workspace before referencing them in HTML; do not leave final dependencies only in a generator's default output folder.
 - Treat any unsourced numbers or outcomes shown in decorative UI as illustrative only, or omit them entirely.
 
-Use native HTML/CSS/SVG instead of image generation for crisp live text, factual charts, exact icons already available in code, progress values, and layout elements that must remain editable and responsive.
+Do not promise that an image-generated PNG becomes an editable Figma component automatically. Deliver `Figma-friendly` assets by using:
+
+- SVG or inline SVG for simple outlined keycaps, dividers, target marks, badge frames, control icons, and line-based ornaments that should be editable in Figma and animatable in HTML.
+- Transparent PNG or WebP for softly rendered, textured, frosted, or object-like visual pieces that are better kept as images.
+- Native HTML/CSS/SVG instead of image generation for live text, factual charts, exact values, and responsive components.
+
+When a generated result is simple enough to reproduce cleanly as vector UI, use it as approved art guidance and rebuild the final component as SVG while preserving the `Style Lock`.
 
 ### 5. Compose Assets into the Story
 
@@ -176,6 +208,7 @@ Build readable and data-sensitive elements directly with semantic HTML, CSS, and
 - Never present invented numbers, rankings, reviews, or outcomes as facts.
 - Preserve the single-file HTML default by embedding final project-bound images as data URLs when practical. Use a relative asset folder only when the user explicitly accepts a multi-file deliverable or the media quantity makes a single file unreasonable.
 - Animate only meaningful states, such as a progress fill, route reveal, message arrival, or number emphasis; respect reduced-motion requirements from the base skill.
+- Favor quiet animation integration for decorative UI: opacity with small translation, clipped reveal, SVG line draw, gentle drift, or background parallax. Avoid looping motion or oversized foreground movement that competes with the headline.
 
 ### 6. Check the Finished Deck
 
@@ -184,8 +217,13 @@ After implementation, verify:
 - every slide still fits its viewport at the sizes required by `frontend-slides`
 - interface text is readable and never competes with the main headline
 - UI style matches the topic rather than looking like a generic software dashboard
+- the author approved the `Style Lock` before full HTML production or any image generation
+- every image-generated UI pass was performed by a dedicated UI-art subagent, never directly by the main agent
 - a requested UI-art pass delivered real selected visual assets, not only placeholder CSS blocks
 - generated assets visibly match the locked palette and art direction
+- UI remains supporting material, with restrained placement and motion
+- the selected UI kit contains multiple topic-specific assets rather than only generic cards, underlines, dots, or dividers
+- simple editable ornaments are delivered as SVG when Figma import/editability matters
 - transparent assets have clean edges and no visible extraction color fringe
 - meaningful text remains selectable/readable HTML unless there is a clear artistic reason otherwise
 - repeated components remain visually consistent
