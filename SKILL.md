@@ -1,6 +1,6 @@
 ---
 name: themed-ui-slides
-description: Create or enhance browser-based HTML presentations through an author-confirmed color and art-direction gate followed by a dedicated subagent-only micro UI production pass, while using frontend-slides as the base workflow. Use when a deck, pitch, class presentation, report, product launch, or converted presentation needs a varied, reference-matched, animation-ready, Figma-friendly themed UI kit such as controllers, keycaps, HUD pieces, app cards, chat panels, timelines, receipts, itinerary cards, or other restrained but distinctive visual components.
+description: Create or enhance browser-based HTML presentations through an author-confirmed color and art-direction gate followed by a dedicated subagent-only micro UI production pass, while using frontend-slides as the base workflow. Use when a deck, pitch, class presentation, report, product launch, or converted presentation needs a varied, topic-inferred or reference-guided, animation-ready, Figma-friendly themed UI kit such as controllers, keycaps, HUD pieces, app cards, chat panels, timelines, receipts, itinerary cards, or other restrained but distinctive visual components.
 ---
 
 # Themed UI Slides
@@ -13,7 +13,7 @@ Use this skill alongside `frontend-slides`.
 
 1. Run the dependency bootstrap below before designing or generating assets.
 2. Load and follow the `frontend-slides` skill for presentation creation, conversion, navigation, inline editing, motion, delivery, and viewport-fitting rules.
-3. Analyze the presentation topic and references, shortlist appropriate HTML palette and art-direction options, and ask the author to confirm one direction before producing a full deck or generating UI assets.
+3. Assume there may be no reference image. Analyze the presentation topic, audience, purpose, and tone; use any supplied references only as optional guidance. Shortlist appropriate HTML palette and art-direction options, then ask the author to confirm one direction before producing a full deck or generating UI assets.
 4. After author confirmation, use a dedicated UI-art subagent for every image-generation pass. In Codex, the subagent loads the bundled `imagegen` skill and tool.
 5. Treat every invariant from `frontend-slides` as mandatory, especially single-file HTML delivery, slide density limits, `clamp()` sizing, `overflow: hidden`, responsive height checks, and required supporting CSS.
 6. Make the UI art pass central whenever the user requests thematic small designs or generated UI, but keep those assets subordinate to the message.
@@ -23,7 +23,9 @@ Use this skill alongside `frontend-slides`.
 
 `frontend-slides` remains authoritative for content discovery, style approval, HTML architecture, responsive fitting, interaction, and final delivery. This skill makes its style-choice phase stricter, then inserts a focused art-production workflow after author approval and before the deck is finalized.
 
-- Before style approval, only analyze content, inspect supplied references, shortlist suitable directions, and produce the style previews allowed by `frontend-slides`. Do not produce the final deck or generated UI assets.
+- Before style approval, only analyze content, inspect any supplied references, shortlist suitable directions, and produce the style previews allowed by `frontend-slides`. Do not produce the final deck or generated UI assets.
+- When no visual reference is supplied, proactively infer suitable directions from the presentation subject, audience, purpose, and tone. Do not require the author to provide an image before presenting options.
+- Use `frontend-slides` presets and extended template gallery as helpful candidate sources when they fit; do not restrict style options to that library when an original, topic-specific direction would be stronger.
 - Even when the author supplies a reference image or describes a palette, summarize the inferred direction and receive confirmation before beginning generated UI production.
 - The main agent may build slide structure, live text, CSS tokens, and reserved image slots while art is being produced, but it must not pretend the generated-UI requirement is complete with placeholders alone.
 - Keep titles, factual content, charts, labels, and important copy in HTML. Generated UI supplies forms, surfaces, subject objects, frames, ornaments, and atmosphere.
@@ -60,15 +62,17 @@ Require an actual image-generation capability whenever the requested design uses
 
 ### 1. Recommend and Confirm the Visual World Before Production
 
-Do not build the full presentation and do not generate UI assets until the author confirms one visual direction. First extract:
+Do not build the full presentation and do not generate UI assets until the author confirms one visual direction. Default to a no-reference starting point unless the author provides imagery. First extract:
 
 - subject, audience, and purpose
 - language used in the deck
-- mood and style direction chosen through the base workflow or supplied through a reference image
+- mood and style cues inferred from the topic, audience, purpose, and tone, plus any optional supplied reference image
 - palette, contrast, texture, edge treatment, dimensionality, icon style, and motion character
 - concrete objects associated with the topic, such as transactions, routes, messages, inventory, lessons, metrics, bookings, or model outputs
 
-Based on the presentation topic and any supplied references, filter out unsuitable directions and present two or three strong palette-and-style options or `frontend-slides` title-slide previews. Each option should state the palette, material feeling, typography direction, micro UI vocabulary, and why it fits the subject.
+Based on the presentation topic, audience, purpose, and tone, filter out unsuitable directions and present two or three strong palette-and-style options or `frontend-slides` title-slide previews. If references exist, incorporate them; if not, generate the candidates independently. Each option should state the palette, material feeling, typography direction, micro UI vocabulary, and why it fits the subject.
+
+Consult suitable `frontend-slides` presets or extended-gallery templates as inspiration where useful, but allow a newly composed visual direction when it matches the presentation better than existing themes.
 
 Ask the author to select or adjust one direction. Record the approved direction as the `Style Lock`; all HTML and UI assets must follow it.
 
@@ -91,7 +95,7 @@ At the same time, write a concise `UI Art Brief` for the art-production pass:
 
 - presentation subject and narrative purpose
 - approved palette, materials, shapes, line weight, depth, and motion mood
-- reference-image role: style reference, not edit target, unless explicitly requested
+- optional reference-image role, when present: style reference, not edit target, unless explicitly requested
 - two to four topic-specific asset families
 - three or more individual component targets when thematic generated UI is requested, with each target tied to the presentation subject
 - intended slide slot for each asset: dimensions or aspect, approximate placement, foreground or background role, and required empty space
@@ -140,7 +144,7 @@ Pass the UI-art subagent only the material it needs:
 
 - the locked theme and palette
 - the presentation topic
-- reference image(s), identified as style references
+- reference image(s), when supplied, identified as optional style references
 - asset family list and HTML role for each asset
 - target aspect or approximate slot size
 - text-free, transparency, factual-accuracy, and no-watermark constraints
@@ -235,4 +239,4 @@ For enhancement of an existing HTML presentation, first preserve the user's cont
 ## Resource
 
 - Read [references/micro-ui-patterns.md](references/micro-ui-patterns.md) to select component families, placement patterns, and topic-specific examples.
-- Read [references/generated-ui-assets.md](references/generated-ui-assets.md) to turn a palette or style reference into generated assets and integrate them into HTML safely.
+- Read [references/generated-ui-assets.md](references/generated-ui-assets.md) to turn an approved topic-derived or reference-guided style lock into generated assets and integrate them into HTML safely.
