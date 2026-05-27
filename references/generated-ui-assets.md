@@ -4,8 +4,8 @@ Use this reference when the presentation should contain image-generated micro UI
 
 ## Required Sequence
 
-1. Identify the presentation subject and inspect any supplied style or reference image.
-2. Let the main agent filter the strongest palette and art-direction candidates based on the subject, then present options or `frontend-slides` style previews to the author.
+1. Identify the presentation subject, audience, purpose, and tone. Treat a supplied style or reference image as optional rather than required.
+2. Let the main agent filter the strongest palette and art-direction candidates from the presentation itself, incorporating any optional reference. Present options or `frontend-slides` style previews to the author; use its theme resources as inspiration, not as a closed menu.
 3. Obtain author confirmation of one `Style Lock` before making the full HTML deck or generating UI imagery.
 4. Write down the approved `Style Lock`:
    - palette and contrast
@@ -28,7 +28,7 @@ Give the art subagent:
 
 - presentation topic and the author-approved `Style Lock`
 - palette, materials, geometry, line style, depth, and mood
-- reference image(s) labeled as style guidance unless an edit was requested
+- reference image(s), only when supplied, labeled as optional style guidance unless an edit was requested
 - two to four assets to produce and the HTML role of each
 - enough distinct pieces to form a usable themed kit rather than a single universal decoration
 - approximate asset slot size, placement, and needed blank space
@@ -73,7 +73,7 @@ Do not accept a generated UI result merely because it matches the palette. It mu
 
 ## Generation Guidance
 
-Treat supplied images as style and palette references unless asked to edit them. The generated subject must also fit the presentation topic.
+A reference image is optional. Without one, derive the proposed palette and art direction from the presentation subject, audience, purpose, and tone, then receive author approval. When images are supplied, treat them as style and palette references unless asked to edit them. The generated subject must also fit the presentation topic.
 
 For example:
 
