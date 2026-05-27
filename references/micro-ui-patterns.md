@@ -1,6 +1,6 @@
 # Thematic Micro UI Patterns
 
-Use this reference after identifying the presentation topic and visual direction, and before generating assets or building the HTML. Select only the components that support the story.
+Use this reference only after the author confirms the selected palette and visual direction. Select only components that support the story and remain secondary to the message.
 
 ## Selection Rules
 
@@ -10,6 +10,9 @@ Use this reference after identifying the presentation topic and visual direction
 4. Keep small labels short enough to remain readable at presentation distance.
 5. Mark invented numbers as illustrative, sample, concept, or scenario unless supplied as source content.
 6. For image-generated components, create text-free objects or blank card shells and place important copy in HTML.
+7. Prefer clean SVG-ready line components for Figma import and HTML animation; use transparent bitmap objects only where material richness matters.
+8. Use small, quiet motion such as fades, short slides, masked reveals, or SVG line draws; remove motion that competes with the headline.
+9. Build a topic-specific kit, not a generic decoration pack: plain dividers, cards, pills, and dots can support distinctive subject components but cannot replace them.
 
 ## Topic Map
 
@@ -26,6 +29,8 @@ Use this reference after identifying the presentation topic and visual direction
 | Sustainability and public topics | footprint meter, resource counter, policy timeline, before-after indicator | showing a proposal or measured change | made-up impact figures presented as proof |
 | Culture, arts, and personal stories | archive tag, ticket stub, audio player, exhibition label, calendar trace | adding context subtly | default SaaS dashboards that flatten the mood |
 | Esports and gaming | keycap set, controller silhouette, match badge shell, crosshair divider, achievement marker | title atmosphere, competition structure, feature framing | neon overload unrelated to the selected art direction |
+
+For a generated thematic kit, choose several complementary pieces from the relevant row. Space them across the deck rather than crowding one slide.
 
 ## Component Recipes
 
@@ -91,6 +96,7 @@ Example: for a soft editorial esports deck with dusty blue, muted gold, and fade
 Remove or revise a component when:
 
 - it could be dropped into any unrelated topic unchanged
+- the complete kit is mostly universal cards, underlines, dividers, or dots without recognisable subject forms
 - its labels are too small or numerous to read during a presentation
 - it forces headline or essential evidence to shrink
 - it implies real evidence the user did not provide
