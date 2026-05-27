@@ -11,11 +11,38 @@ Use this reference when the presentation should contain image-generated micro UI
    - geometry and border style
    - icon or object language
    - animation mood
-3. Map the subject to two to four suitable asset families.
-4. Decide each asset's HTML role before generating it.
-5. Use the supported image-generation capability selected during dependency bootstrap, generate previews or selected assets, inspect them, and keep only assets that match both style and subject. In Codex, use `imagegen`.
-6. Integrate selected assets into HTML with real layout, text, and animation.
-7. Validate visual match, readability, transparency, and viewport fit.
+3. Have the main agent build the HTML text skeleton and reserve intentional asset slots under `frontend-slides` constraints.
+4. Map the subject to two to four suitable asset families and decide each asset's HTML role.
+5. If parallel delegation has been requested or approved and is supported, hand a `UI Art Brief` to a dedicated art subagent while the main agent continues typography and layout. Otherwise run the same art pass sequentially.
+6. Use the supported image-generation capability selected during dependency bootstrap, generate previews or selected assets, inspect them, and keep only assets that match both style and subject. In Codex, use `imagegen`.
+7. Integrate selected assets into HTML with real layout, text, and animation.
+8. Validate visual match, readability, transparency, and viewport fit.
+
+## UI Art Brief And Handoff
+
+The main agent owns the deck. The dedicated art subagent owns only generated visual assets.
+
+Give the art subagent:
+
+- presentation topic and the approved visual thesis
+- palette, materials, geometry, line style, depth, and mood
+- reference image(s) labeled as style guidance unless an edit was requested
+- two to four assets to produce and the HTML role of each
+- approximate asset slot size, placement, and needed blank space
+- output constraints: no meaningful text, no invented values, no watermark, transparent or removable background where appropriate
+- a workspace destination for final selected images
+
+Require this handoff back:
+
+| Returned Item | Purpose |
+| --- | --- |
+| Selected asset path | lets the main agent integrate an actual project file |
+| HTML role and target slide | avoids decorative dumping |
+| Transparency or background status | confirms whether it can float cleanly in the deck |
+| Placement note | states crop, opacity, mask, or entrance suggestion |
+| Rejected or unresolved item | makes missing or unsuitable UI visible rather than silently omitted |
+
+If the subagent cannot access image generation, it should return the prepared prompts and state the limitation. The main agent may then run image generation itself if available, but must not claim that generated UI already exists.
 
 ## Asset Roles
 
@@ -57,6 +84,7 @@ Generated images are bitmap assets, not editable HTML components. Use them as vi
 - In Codex, follow the installed `imagegen` skill for transparent-output generation and alpha validation. In another host, use only a transparency or background-removal workflow supported by its configured image provider.
 - Prefer ordinary opaque images only for full-bleed panels or backgrounds where transparency is unnecessary.
 - Keep important text out of generated images because it may render inaccurately and cannot adapt responsively.
+- Store final selected project-bound assets in the presentation workspace before HTML integration. Do not reference temporary or generator-default output locations as final project assets.
 
 For a single-file presentation, embed selected final assets as data URLs in the HTML when practical. For an accepted multi-file deck, store selected assets beside the HTML and reference them with relative paths.
 
