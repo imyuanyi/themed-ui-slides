@@ -1,4 +1,4 @@
 interface:
   display_name: "Themed UI Slides"
-  short_description: "Art-direct micro UI assets for polished HTML slides"
-  default_prompt: "Use $themed-ui-slides with $frontend-slides to lock the visual theme, build live HTML typography, and, when I authorize parallel delegation, assign a UI-art agent to generate extractable style-matched micro UI assets with an available image-generation capability."
+  short_description: "Confirm style, then craft subtle UI accents"
+  default_prompt: "Use $themed-ui-slides with $frontend-slides. First judge the presentation topic, shortlist fitting palette and art-direction options, and ask me to confirm the Style Lock. After I confirm and authorize delegation, require a dedicated UI-art subagent to create a varied, animation-ready, Figma-friendly themed UI kit with several recognizable topic-linked components, not only generic cards or lines; keep the main HTML typography and message dominant."
