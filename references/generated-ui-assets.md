@@ -5,7 +5,7 @@ Use this reference when the presentation should contain image-generated micro UI
 ## Required Sequence
 
 1. Identify the presentation subject, audience, purpose, and tone. Treat a supplied style or reference image as optional rather than required.
-2. Let the main agent filter the strongest palette and art-direction candidates from the presentation itself, incorporating any optional reference. Present options or `frontend-slides` style previews to the author; use its theme resources as inspiration, not as a closed menu.
+2. Let the main agent filter the strongest palette and art-direction candidates from the presentation itself, incorporating any optional reference. Generate three distinct lightweight `frontend-slides` title-slide previews by default; use its theme resources as inspiration, not as a closed menu. Use text-only options only when the host cannot create or open HTML previews, and state that limitation.
 3. Obtain author confirmation of one `Style Lock` before making the full HTML deck or generating UI imagery.
 4. Write down the approved `Style Lock`:
    - palette and contrast
@@ -15,8 +15,8 @@ Use this reference when the presentation should contain image-generated micro UI
    - animation mood
 5. Have the main agent build the HTML text skeleton and reserve intentional asset slots under `frontend-slides` constraints.
 6. Map the subject to two to four restrained asset families and at least three distinct topic-linked component targets for a short or medium deck; decide each asset's HTML role and quiet animation behavior.
-7. For any image generation, require authorization for and spawn a dedicated UI-art subagent. The main agent must not generate thematic UI images directly.
-8. Have that subagent use the supported image-generation capability selected during dependency bootstrap, inspect results, and keep only assets that match the approved style, subject, and supporting role. In Codex, the subagent uses `imagegen`.
+7. For any image generation, check the available capability only after the `Style Lock`, then require authorization for and spawn a dedicated UI-art subagent. The main agent must not generate thematic UI images directly.
+8. Have that subagent use the supported image-generation capability, inspect results, and keep only assets that match the approved style, subject, and supporting role. In Codex, the subagent uses `imagegen`.
 9. Integrate selected assets into HTML with real layout, text, and restrained animation.
 10. Validate author approval, subagent use, visual match, readability, import-ready format, transparency, and viewport fit.
 
@@ -37,16 +37,13 @@ Give the art subagent:
 - motion intent: gentle entrance, line draw, fade, mask reveal, or low-opacity background drift
 - a workspace destination for final selected images
 
-Require this handoff back:
+Require a manifest row for every selected component:
 
-| Returned Item | Purpose |
-| --- | --- |
-| Selected asset path | lets the main agent integrate an actual project file |
-| HTML role and target slide | avoids decorative dumping |
-| Transparency or background status | confirms whether it can float cleanly in the deck |
-| Format recommendation | states SVG reconstruction or transparent image delivery |
-| Placement note | states crop, opacity, mask, or entrance suggestion |
-| Rejected or unresolved item | makes missing or unsuitable UI visible rather than silently omitted |
+| Asset name | Target slide | HTML role | File format | Transparent background | Motion behavior | Rebuild as SVG |
+| --- | --- | --- | --- | --- | --- | --- |
+| concise component name | slide number or purpose | hero, shell, background, accent, or evidence frame | SVG, PNG, or WebP | yes, no, or needs cleanup | entrance, line draw, mask reveal, drift, or static | yes or no |
+
+For each row, also provide the selected workspace asset path and any crop, opacity, mask, or placement note. List rejected or unresolved items separately so missing or unsuitable UI remains visible rather than silently omitted.
 
 If the subagent cannot access image generation, it should return the prepared prompts and state the limitation. The main agent must not take over image generation for this skill. It may offer a separately approved non-generated SVG/CSS route.
 
@@ -60,6 +57,7 @@ Do not accept a generated UI result merely because it matches the palette. It mu
 - Plain dividers, underlines, dots, empty rounded cards, and generic pills can accompany the kit; they must not be the entire kit.
 - If a generic card shell is required for HTML text, customize its silhouette, corner mark, status ornament, or object pairing so it belongs to the subject.
 - Keep variety across the full deck and restraint per slide: multiple available assets do not mean showing all of them at once.
+- Run the swap test: if a component could be reused unchanged in esports, travel, and campus-coffee presentations, it is too generic to count toward the themed kit.
 
 ## Asset Roles
 
@@ -134,8 +132,10 @@ Do not let a bitmap become a substitute for layout reasoning. The final HTML mus
 - Does every chosen asset match the approved style and palette?
 - Does every asset clearly relate to the presentation topic?
 - Does the final kit contain multiple independently usable topic-linked pieces rather than generic framework decoration alone?
+- Does every counted themed component pass the swap test rather than fitting unrelated topics unchanged?
 - Was style approved before any image-generation pass?
 - Was every image-generation pass run by the dedicated UI-art subagent?
+- Does the returned asset manifest list the name, target slide, HTML role, format, transparency status, motion behavior, and SVG-rebuild need for each selected component?
 - Are key words, numbers, and sourced claims still HTML rather than unreliable image text?
 - Are simple editable UI pieces SVG-ready where Figma use matters?
 - Are alpha edges clean when the asset floats above the slide background?
