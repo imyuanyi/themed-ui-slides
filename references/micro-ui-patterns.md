@@ -13,6 +13,7 @@ Use this reference only after the author confirms the selected palette and visua
 7. Prefer clean SVG-ready line components for Figma import and HTML animation; use transparent bitmap objects only where material richness matters.
 8. Use small, quiet motion such as fades, short slides, masked reveals, or SVG line draws; remove motion that competes with the headline.
 9. Build a topic-specific kit, not a generic decoration pack: plain dividers, cards, pills, and dots can support distinctive subject components but cannot replace them.
+10. Run the swap test: if a component could be reused unchanged in esports, travel, and campus-coffee presentations, it is too generic to count as a themed component.
 
 ## Topic Map
 
